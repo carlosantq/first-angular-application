@@ -1,3 +1,29 @@
 <h1>
+  <!-- 1. Interpolate -->
   {{title}}
 </h1>
+
+<!-- 2. Property Binding -->
+<img [src]="imgURL" alt="Imagem">
+
+<form>
+  <p>Task to be added: <input (keyup)="showWhileTyping(entry.value)" type="text" name="Texto" id="texto" value="" #entry></p>
+  <!--<p *ngIf="task != ''">Preview: <span class="preview">{{task}}</span></p>-->
+  <br/>
+  <!-- 3. Event Binding -->
+  <button (click)="appService.addTask(entry)">Add</button>
+  <button (click)="appService.removeAllTasks()">Remove All</button>
+
+  <ul>
+    <!-- 4. Class Binding -->
+    <!-- 5. Style Binding  --> 
+    <!-- ngFor -->
+    <li *ngFor="let task of tasks; let i = index" [class.blue]="isBlue">{{task}} <button (click)="appService.removeTask(i)">Remove</button></li>
+    
+  </ul>
+
+  <button (click)="makeItBlue()">{{buttonText}}</button>
+
+  <!-- ngIf -->
+  <p *ngIf="isBlue">Now it's blue.</p>
+</form>
